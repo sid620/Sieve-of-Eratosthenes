@@ -1,0 +1,36 @@
+#include <bits/stdc++.h>
+using namespace std;
+typedef long long int LL;
+int main()
+{
+	LL t,i,n,j,k;
+	double d;
+	cin>>t;
+	for(i=0;i<t;i++)
+	{
+		cin>>n;
+		vector <bool> is_prime(n,true);
+		is_prime[0]=false;
+		is_prime[1]=false;
+		for(j=2;j*j<=n;j++)
+		{
+			if(is_prime[j])
+			{   d=sqrt(n);
+				for(k=j*j;k<=d;k+=j)
+				{
+					is_prime[k]=false;
+				}
+				while(n%j==0)
+				{
+					cout<<j<<" ";
+					n=n/j;
+				}
+			}
+		}
+		if(n!=1)
+		cout<<n<<endl;
+		else
+		cout<<endl;
+	}
+	return 0;
+}
